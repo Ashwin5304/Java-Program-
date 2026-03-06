@@ -1,95 +1,72 @@
-
+package calci;
 import java.util.Scanner;
 
 class Calc {
 
-    // Static Variables
-    static int num1;
-    static int num2;
+    static int num1, num2;   
+    private int a, b;        
 
-    // Instance Variables
-    private int a;
-    private int b;
-
-    // Parameterized Constructor
-    public Calc(int a, int b) {
-        this.a = a;   // using 'this'
+    Calc(int a, int b) {
+        this.a = a;
         this.b = b;
     }
 
-    public int Add() {
-        return this.a + this.b;
+    int Add() { 
+    	return a + b; 
+    	}
+    int Sub() 
+    { 
+    	return a - b; 
     }
+    int Mul() 
+    { 
+    	return a * b; 
+    	}
 
-    public int Sub() {
-        return this.a - this.b;
-    }
-
-    public int Mul() {
-        return this.a * this.b;
-    }
-
-    public double Div() {
-        if (this.b == 0) {
-            System.out.println("Error: Can't be divided by 0");
+    double Div() {
+        if (b == 0) {
+            System.out.println("Error: Can't divide by 0");
             return 0;
         }
-        return (double) this.a / this.b;
+        return a / b;   
     }
 }
 
-public class Calc1 {
+public class calci {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
         while (true) {
 
-            System.out.print("Enter value for number 1: ");
+            System.out.print("Enter number 1: ");
             Calc.num1 = sc.nextInt();
 
-            System.out.print("Enter value for number 2: ");
+            System.out.print("Enter number 2: ");
             Calc.num2 = sc.nextInt();
 
             Calc cal = new Calc(Calc.num1, Calc.num2);
 
-            System.out.println("\n--- Calculator ---");
-            System.out.println("1. Addition");
-            System.out.println("2. Subtraction");
-            System.out.println("3. Multiplication");
-            System.out.println("4. Division");
-            System.out.println("5. Exit");
+            System.out.print("\n1.Add 2.Sub 3.Mul 4.Div 5.Exit \nChoice: ");
+            int ch = sc.nextInt();
 
-            System.out.print("Enter your choice: ");
-            int choice = sc.nextInt();
+            
 
-            switch (choice) {
-
-                case 1:
-                    System.out.println("Result: " + cal.Add());
-                    break;
-
-                case 2:
-                    System.out.println("Result: " + cal.Sub());
-                    break;
-
-                case 3:
-                    System.out.println("Result: " + cal.Mul());
-                    break;
-
-                case 4:
-                    System.out.println("Result: " + cal.Div());
-                    break;
-
+            switch (ch) {
+                case 1: System.out.println("Result: " + cal.Add()); 
+                break;
+                case 2: System.out.println("Result: " + cal.Sub()); 
+                break;
+                case 3: System.out.println("Result: " + cal.Mul()); 
+                break;
+                case 4: System.out.println("Result: " + cal.Div()); 
+                break;
                 case 5:
-                    System.out.println("Exiting...");
-                    return;
-
-                default:
-                    System.out.println("Invalid Choice");
+                	System.out.println("EXIT");
+                	return;
+                	
+                default: System.out.println("Invalid choice");
             }
-
-            System.out.println();
         }
     }
 }
