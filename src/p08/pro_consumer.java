@@ -1,10 +1,9 @@
 package P8;
-
 import java.util.Scanner;
 
 class Buffer {
-    private int number;
-    private boolean isEmpty = true;
+     int number;
+     boolean isEmpty = true;
 
     // Producer method
     public synchronized void put(int value) {
@@ -40,8 +39,8 @@ class Buffer {
 
 // Producer thread
 class Producer extends Thread {
-    private Buffer buffer;
-    private int limit;
+    Buffer buffer;
+     int limit;
 
     Producer(Buffer buffer, int limit) {
         this.buffer = buffer;
@@ -51,19 +50,14 @@ class Producer extends Thread {
     public void run() {
         for (int i = 0; i < limit; i++) {
             buffer.put(i);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                System.out.println(e);
-            }
         }
     }
 }
 
 // Consumer thread
 class Consumer extends Thread {
-    private Buffer buffer;
-    private int limit;
+     Buffer buffer;
+     int limit;
 
     Consumer(Buffer buffer, int limit) {
         this.buffer = buffer;
@@ -73,11 +67,6 @@ class Consumer extends Thread {
     public void run() {
         for (int i = 0; i < limit; i++) {
             buffer.get();
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                System.out.println(e);
-            }
         }
     }
 }
